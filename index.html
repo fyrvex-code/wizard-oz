@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Wizard of Oz — Презентация</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #87ceeb, #f0e68c);
+      color: #222;
+      overflow-x: hidden;
+    }
+
+    header {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
+        url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      color: white;
+    }
+
+    .hero {
+      max-width: 900px;
+      animation: fadeIn 1.5s ease;
+    }
+
+    .hero h1 {
+      font-size: 56px;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+    }
+
+    .hero p {
+      font-size: 22px;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      background: #ff4747;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-size: 18px;
+      transition: 0.3s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn:hover {
+      background: #d93636;
+      transform: scale(1.05);
+    }
+
+    section {
+      padding: 80px 20px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      font-size: 40px;
+      text-align: center;
+      margin-bottom: 40px;
+      color: #1b4332;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.9);
+      border-radius: 18px;
+      padding: 25px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      transition: 0.3s;
+      transform: translateY(30px);
+      opacity: 0;
+    }
+
+    .card.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+    }
+
+    .card h3 {
+      margin-bottom: 15px;
+      color: #2d6a4f;
+      font-size: 24px;
+    }
+
+    .card p {
+      line-height: 1.6;
+      font-size: 17px;
+    }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .timeline-item {
+      background: rgba(255,255,255,0.92);
+      padding: 25px;
+      border-left: 8px solid #2d6a4f;
+      border-radius: 12px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+      transform: translateX(-30px);
+      opacity: 0;
+      transition: 0.6s;
+    }
+
+    .timeline-item.show {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    .quote-box {
+      margin-top: 40px;
+      background: rgba(255,255,255,0.92);
+      padding: 30px;
+      border-radius: 18px;
+      text-align: center;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+    }
+
+    .quote-box p {
+      font-size: 24px;
+      font-style: italic;
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    .quote-box button {
+      margin-top: 10px;
+    }
+
+    footer {
+      background: #1b4332;
+      color: white;
+      text-align: center;
+      padding: 25px 15px;
+      font-size: 16px;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 38px;
+      }
+
+      .hero p {
+        font-size: 18px;
+      }
+
+      h2 {
+        font-size: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="hero">
+      <h1>The Wizard of Oz</h1>
+      <p>
+        Презентационный сайт о знаменитой сказке и фильме
+        <br><strong>«Волшебник страны Оз»</strong>
+      </p>
+      <a href="#about" class="btn">Начать просмотр</a>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="container">
+      <h2>О произведении</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Автор</h3>
+          <p>
+            «Удивительный Волшебник из страны Оз» — это известная сказка,
+            написанная Лайменом Фрэнком Баумом. Она стала одной из самых популярных
+            историй в мировой литературе.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Главная идея</h3>
+          <p>
+            История показывает, что смелость, ум, доброе сердце и вера в себя
+            часто уже находятся внутри нас. Иногда человеку нужно лишь это понять.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Жанр</h3>
+          <p>
+            Это сказка-приключение с элементами фантастики, магии и глубокого
+            символизма. Она интересна как детям, так и взрослым.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2>Главные персонажи</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Дороти</h3>
+          <p>
+            Добрая и смелая девочка, которая попадает в страну Оз после урагана.
+            Её главная мечта — вернуться домой.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Страшила</h3>
+          <p>
+            Персонаж, который считает, что у него нет мозгов. На самом деле
+            он часто проявляет ум и сообразительность.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Железный Дровосек</h3>
+          <p>
+            Он мечтает получить сердце, хотя уже умеет сострадать и заботиться
+            о своих друзьях.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Трусливый Лев</h3>
+          <p>
+            Лев считает себя трусом, но по ходу истории доказывает,
+            что способен на настоящую храбрость.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2>Сюжет</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <h3>1. Ураган</h3>
+          <p>
+            Дороти живёт в Канзасе. Однажды сильный ураган переносит её дом
+            в волшебную страну Оз.
+          </p>
+        </div>
+        <div class="timeline-item">
+          <h3>2. Путешествие по жёлтой кирпичной дороге</h3>
+          <p>
+            Чтобы вернуться домой, Дороти должна отправиться к Волшебнику Оз.
+            По пути она встречает новых друзей.
+          </p>
+        </div>
+        <div class="timeline-item">
+          <h3>3. Испытания</h3>
+          <p>
+            Герои проходят через множество трудностей, помогают друг другу
+            и становятся сильнее.
+          </p>
+        </div>
+        <div class="timeline-item">
+          <h3>4. Главный урок</h3>
+          <p>
+            В конце оказывается, что качества, которые искали друзья,
+            уже были у них с самого начала.
+          </p>
+        </div>
+      </div>
+
+      <div class="quote-box">
+        <p id="quote">«Нет места лучше дома.»</p>
+        <button class="btn" onclick="changeQuote()">Показать другую цитату</button>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2>Почему эта история важна</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Учит добру</h3>
+          <p>
+            Произведение показывает ценность дружбы, взаимопомощи и верности.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Вдохновляет</h3>
+          <p>
+            Герои помогают понять, что человек способен преодолевать страхи
+            и открывать в себе силы.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Остаётся актуальным</h3>
+          <p>
+            История о поиске себя, мечтах и доме остаётся понятной и важной
+            для людей любого возраста.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Презентация по теме: The Wizard of Oz | Сделано на HTML, CSS и JavaScript</p>
+  </footer>
+
+  <script>
+    const quotes = [
+      "«Нет места лучше дома.»",
+      "«Смелость всегда была внутри тебя.»",
+      "«Настоящий ум проявляется в поступках.»",
+      "«Доброе сердце — одна из самых больших ценностей.»"
+    ];
+
+    function changeQuote() {
+      const quoteElement = document.getElementById("quote");
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      quoteElement.textContent = quotes[randomIndex];
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
+
+    document.querySelectorAll(".card, .timeline-item").forEach(item => {
+      observer.observe(item);
+    });
+  </script>
+
+</body>
+</html>
