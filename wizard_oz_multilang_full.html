@@ -1,0 +1,2422 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Wizard of Oz — Премиум сайт-презентация</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Marcellus&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --bg-1: #07111f;
+      --bg-2: #10233d;
+      --bg-3: #0e4d45;
+      --gold: #f7c948;
+      --gold-2: #ffde7a;
+      --emerald: #18b67d;
+      --rose: #e66ab0;
+      --sky: #8fd3ff;
+      --text: #f8fbff;
+      --muted: #cfe0f3;
+      --card: rgba(255, 255, 255, 0.09);
+      --card-strong: rgba(255, 255, 255, 0.14);
+      --line: rgba(255, 255, 255, 0.14);
+      --shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+      --radius: 28px;
+      --nav-height: 82px;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(230, 106, 176, 0.14), transparent 22%),
+        radial-gradient(circle at 90% 10%, rgba(247, 201, 72, 0.16), transparent 24%),
+        radial-gradient(circle at 50% 90%, rgba(24, 182, 125, 0.14), transparent 24%),
+        linear-gradient(135deg, var(--bg-1), var(--bg-2), var(--bg-3));
+      overflow-x: hidden;
+    }
+
+
+    .parallax-scene {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .parallax-layer {
+      position: absolute;
+      inset: -8%;
+      will-change: transform;
+      transition: transform 0.12s linear;
+    }
+
+    .layer-stars {
+      background:
+        radial-gradient(2px 2px at 12% 18%, rgba(255,255,255,0.28), transparent 60%),
+        radial-gradient(2px 2px at 72% 14%, rgba(255,255,255,0.24), transparent 60%),
+        radial-gradient(1.5px 1.5px at 34% 52%, rgba(255,255,255,0.20), transparent 60%),
+        radial-gradient(2px 2px at 84% 68%, rgba(255,255,255,0.16), transparent 60%),
+        radial-gradient(2px 2px at 21% 82%, rgba(255,255,255,0.18), transparent 60%);
+      opacity: 0.7;
+      mix-blend-mode: screen;
+    }
+
+    .layer-glow-1 {
+      background: radial-gradient(circle at 18% 22%, rgba(230, 106, 176, 0.22), transparent 22%);
+      filter: blur(24px);
+    }
+
+    .layer-glow-2 {
+      background: radial-gradient(circle at 82% 20%, rgba(247, 201, 72, 0.18), transparent 24%);
+      filter: blur(24px);
+    }
+
+    .layer-glow-3 {
+      background: radial-gradient(circle at 50% 78%, rgba(24, 182, 125, 0.18), transparent 26%);
+      filter: blur(28px);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        radial-gradient(2px 2px at 100px 120px, rgba(255,255,255,0.45), transparent),
+        radial-gradient(2px 2px at 280px 70px, rgba(255,255,255,0.35), transparent),
+        radial-gradient(2px 2px at 500px 160px, rgba(255,255,255,0.4), transparent),
+        radial-gradient(2px 2px at 760px 50px, rgba(255,255,255,0.3), transparent),
+        radial-gradient(2px 2px at 980px 180px, rgba(255,255,255,0.36), transparent);
+      background-size: 1200px 280px;
+      opacity: 0.45;
+      animation: starsMove 28s linear infinite;
+    }
+
+    @keyframes starsMove {
+      from { transform: translateY(0); }
+      to { transform: translateY(280px); }
+    }
+
+    .gradient-orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(70px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.35;
+    }
+
+    .orb-1 {
+      width: 280px;
+      height: 280px;
+      background: #ff74b6;
+      top: 8%;
+      left: -60px;
+      animation: floatOrb 10s ease-in-out infinite alternate;
+    }
+
+    .orb-2 {
+      width: 320px;
+      height: 320px;
+      background: #ffd45f;
+      right: -90px;
+      top: 14%;
+      animation: floatOrb 12s ease-in-out infinite alternate;
+    }
+
+    .orb-3 {
+      width: 300px;
+      height: 300px;
+      background: #22d3a3;
+      bottom: 5%;
+      left: 35%;
+      animation: floatOrb 11s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatOrb {
+      from { transform: translateY(0) scale(1); }
+      to { transform: translateY(-28px) scale(1.08); }
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--nav-height);
+      z-index: 1000;
+      backdrop-filter: blur(16px);
+      background: rgba(7, 17, 31, 0.72);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      transition: 0.35s ease;
+    }
+
+    nav.scrolled {
+      background: rgba(4, 11, 22, 0.88);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.25);
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      height: 100%;
+      margin: 0 auto;
+      padding: 0 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: fit-content;
+      font-weight: 900;
+      letter-spacing: 0.3px;
+      color: var(--gold-2);
+      font-size: 20px;
+      white-space: nowrap;
+    }
+
+    .logo i {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(247,201,72,0.25), rgba(255,255,255,0.07));
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.15);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+      white-space: nowrap;
+    }
+
+    .nav-links::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-links a {
+      position: relative;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 700;
+      padding: 12px 14px;
+      border-radius: 14px;
+      transition: 0.25s ease;
+      white-space: nowrap;
+      flex: 0 0 auto;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      bottom: 6px;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--gold), var(--rose), var(--emerald));
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: 0.3s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--gold-2);
+      background: rgba(255,255,255,0.06);
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      transform: scaleX(1);
+    }
+
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 0 0 auto;
+    }
+
+    .lang-btn {
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      border-radius: 12px;
+      padding: 10px 12px;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: 0.25s ease;
+      min-width: 50px;
+    }
+
+    .lang-btn:hover,
+    .lang-btn.active {
+      color: var(--gold-2);
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.24);
+    }
+
+    header.hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: calc(var(--nav-height) + 40px) 20px 60px;
+    }
+
+    .hero-card {
+      max-width: 1300px;
+      width: 100%;
+      border-radius: 34px;
+      overflow: hidden;
+      background:
+        linear-gradient(115deg, rgba(255,255,255,0.12), rgba(255,255,255,0.05)),
+        url('https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: var(--shadow);
+      position: relative;
+      isolation: isolate;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(5,10,20,0.82) 0%, rgba(7,17,31,0.66) 40%, rgba(7,17,31,0.28) 100%);
+      z-index: -1;
+    }
+
+    .hero-content {
+      width: min(760px, 100%);
+      padding: 72px 46px 72px 46px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.16);
+      color: #fff2bf;
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 22px;
+      backdrop-filter: blur(8px);
+    }
+
+    .hero h1 {
+      font-family: "Marcellus", serif;
+      font-size: 74px;
+      line-height: 1.04;
+      color: #fff7da;
+      margin-bottom: 22px;
+      text-shadow: 0 0 18px rgba(247,201,72,0.18);
+    }
+
+    .hero p {
+      font-size: 18px;
+      line-height: 1.92;
+      color: var(--muted);
+      margin-bottom: 18px;
+      max-width: 680px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      font-weight: 800;
+      font-size: 15px;
+      border-radius: 16px;
+      padding: 15px 22px;
+      transition: 0.3s ease;
+    }
+
+    .btn-primary {
+      color: #0b1220;
+      background: linear-gradient(135deg, var(--gold), #ffe08c);
+      box-shadow: 0 14px 28px rgba(247, 201, 72, 0.22);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-4px) scale(1.03);
+    }
+
+    .btn-secondary {
+      color: white;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.14);
+      transform: translateY(-4px);
+    }
+
+    main section {
+      padding: 100px 20px;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-family: "Marcellus", serif;
+      font-size: 50px;
+      color: #fff0ba;
+      margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      max-width: 960px;
+      margin: 0 auto 52px;
+      color: var(--muted);
+      line-height: 1.9;
+      font-size: 18px;
+    }
+
+    .glass-panel {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+    }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .about-main,
+    .about-side {
+      padding: 34px;
+    }
+
+    .about-main h3,
+    .about-side h3,
+    .slider-text h3,
+    .quotes-side h3 {
+      font-size: 30px;
+      margin-bottom: 18px;
+      color: #fff2bf;
+    }
+
+    .about-main p,
+    .about-side p,
+    .feature-item p,
+    .character-content p,
+    .slider-text p,
+    .quote-card p,
+    .facts-grid p,
+    .final-panel p {
+      color: var(--muted);
+      line-height: 1.9;
+      font-size: 16px;
+    }
+
+    .road {
+      height: 18px;
+      border-radius: 999px;
+      margin-top: 24px;
+      background: repeating-linear-gradient(
+        90deg,
+        #ffd84d 0 34px,
+        #ffb800 34px 68px
+      );
+      box-shadow: 0 0 18px rgba(255, 200, 40, 0.3);
+      animation: roadFlow 7s linear infinite;
+    }
+
+    @keyframes roadFlow {
+      from { background-position: 0 0; }
+      to { background-position: 136px 0; }
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .feature-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 18px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+    }
+
+    .feature-icon {
+      min-width: 52px;
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+      background: linear-gradient(135deg, rgba(247,201,72,0.25), rgba(230,106,176,0.18));
+      color: #fff1b4;
+    }
+
+    .feature-item h4 {
+      font-size: 18px;
+      margin-bottom: 8px;
+      color: white;
+    }
+
+    .characters-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .character-card {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      overflow: hidden;
+      min-height: 290px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      transition: transform 0.18s ease, box-shadow 0.28s ease;
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+
+    .character-card:hover {
+      box-shadow: 0 20px 55px rgba(0,0,0,0.42);
+    }
+
+    .character-image {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .character-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.5s ease;
+    }
+
+    .character-card:hover .character-image img {
+      transform: scale(1.1) rotate(1.2deg);
+      filter: saturate(1.08) contrast(1.04);
+    }
+
+    .character-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent, rgba(0,0,0,0.18));
+    }
+
+    .character-image::before {
+      content: "";
+      position: absolute;
+      top: -10%;
+      left: -45%;
+      width: 70%;
+      height: 130%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+      transform: skewX(-18deg) translateX(-120%);
+      transition: transform 0.8s ease;
+      z-index: 2;
+    }
+
+    .character-card:hover .character-image::before {
+      transform: skewX(-18deg) translateX(260%);
+    }
+
+    .character-content {
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .character-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      padding: 8px 12px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+      font-size: 13px;
+      font-weight: 800;
+      color: #fff5cf;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .character-content h3 {
+      font-size: 28px;
+      color: #ffffff;
+      margin-bottom: 12px;
+    }
+
+    .character-content p {
+      margin-bottom: 14px;
+    }
+
+    .character-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .character-tags span {
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      color: #dff9ef;
+      background: rgba(24, 182, 125, 0.13);
+      border: 1px solid rgba(24, 182, 125, 0.26);
+    }
+
+    .slider-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: stretch;
+    }
+
+    .slider-box {
+      position: relative;
+      overflow: hidden;
+      min-height: 520px;
+      border-radius: 32px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .slides {
+      height: 100%;
+      position: relative;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transform: scale(1.05);
+      transition: opacity 0.7s ease, transform 0.9s ease;
+      pointer-events: none;
+    }
+
+    .slide.active {
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: auto;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .slide-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(3,7,16,0.08), rgba(3,7,16,0.68));
+      display: flex;
+      align-items: flex-end;
+      padding: 28px;
+    }
+
+    .slide-caption {
+      max-width: 620px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      backdrop-filter: blur(10px);
+      border-radius: 22px;
+      padding: 18px 18px 16px;
+    }
+
+    .slide-caption h4 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: #fff3bf;
+    }
+
+    .slide-caption p {
+      line-height: 1.8;
+      color: #eaf4ff;
+      font-size: 15px;
+    }
+
+    .slider-controls {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 3;
+    }
+
+    .slider-arrows {
+      display: flex;
+      gap: 12px;
+    }
+
+    .slider-btn {
+      width: 48px;
+      height: 48px;
+      border: none;
+      border-radius: 16px;
+      cursor: pointer;
+      color: white;
+      font-size: 18px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.16);
+      backdrop-filter: blur(10px);
+      transition: 0.25s ease;
+    }
+
+    .slider-btn:hover {
+      background: rgba(255,255,255,0.22);
+      transform: translateY(-3px);
+    }
+
+    .slider-dots {
+      display: flex;
+      gap: 10px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.32);
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .dot.active {
+      width: 34px;
+      background: linear-gradient(90deg, var(--gold), var(--rose));
+    }
+
+    .slider-text {
+      padding: 34px;
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .slider-points {
+      display: grid;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .slider-point {
+      display: flex;
+      gap: 14px;
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .slider-point i {
+      color: #ffe38c;
+      font-size: 20px;
+      margin-top: 4px;
+    }
+
+    .quotes-layout {
+      display: grid;
+      grid-template-columns: 1fr 0.95fr;
+      gap: 26px;
+      align-items: stretch;
+    }
+
+    .quote-display,
+    .quotes-side,
+    .final-panel {
+      padding: 34px;
+    }
+
+    .quote-display {
+      min-height: 360px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quote-display::before {
+      content: "“";
+      position: absolute;
+      top: 12px;
+      left: 22px;
+      font-size: 180px;
+      line-height: 1;
+      color: rgba(255,255,255,0.06);
+      font-family: Georgia, serif;
+    }
+
+    .quote-badge {
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      margin-bottom: 22px;
+      font-size: 13px;
+      font-weight: 800;
+      color: #fff3bf;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .quote-text {
+      font-size: 34px;
+      line-height: 1.55;
+      color: white;
+      max-width: 760px;
+      opacity: 0;
+      transform: translateY(14px);
+      transition: 0.65s ease;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .quote-text.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .quote-author {
+      color: #ffe5a0;
+      font-size: 17px;
+      font-weight: 600;
+      opacity: 0.9;
+    }
+
+    .quote-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 26px;
+    }
+
+    .mini-card {
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.09);
+      margin-top: 16px;
+    }
+
+    .mini-card h4 {
+      font-size: 18px;
+      margin-bottom: 8px;
+      color: white;
+    }
+
+    .facts-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .fact-card {
+      text-align: center;
+      padding: 30px 24px;
+      border-radius: 26px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: var(--shadow);
+      transition: 0.3s ease;
+    }
+
+    .fact-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .tilt-card {
+      transform-style: preserve-3d;
+      will-change: transform;
+      transition: transform 0.18s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+    }
+
+    .tilt-card:hover {
+      border-color: rgba(255,255,255,0.22);
+    }
+
+    .fact-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 18px;
+      display: grid;
+      place-items: center;
+      border-radius: 20px;
+      font-size: 24px;
+      color: #fff2bf;
+      background: linear-gradient(135deg, rgba(247,201,72,0.22), rgba(230,106,176,0.18));
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .fact-number {
+      font-size: 42px;
+      font-weight: 900;
+      color: var(--gold-2);
+      margin-bottom: 10px;
+    }
+
+    .final-panel {
+      text-align: center;
+    }
+
+    .final-panel h3 {
+      font-size: 34px;
+      color: #fff2bf;
+      margin-bottom: 18px;
+    }
+
+    .final-actions {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 26px;
+    }
+
+    footer {
+      padding: 36px 20px 52px;
+      text-align: center;
+      color: #d7e5f6;
+      font-size: 15px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(34px);
+      transition: 0.8s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #toTop {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 58px;
+      height: 58px;
+      border: none;
+      border-radius: 18px;
+      color: #0b1220;
+      background: linear-gradient(135deg, var(--gold), #ffe59c);
+      box-shadow: 0 16px 36px rgba(247,201,72,0.28);
+      cursor: pointer;
+      font-size: 20px;
+      z-index: 1200;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(12px);
+      transition: 0.3s ease;
+    }
+
+    #toTop.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    #toTop:hover {
+      transform: translateY(-4px);
+    }
+
+    @media (max-width: 1180px) {
+      .characters-grid,
+      .facts-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about-layout,
+      .slider-wrap,
+      .quotes-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 60px;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .character-card {
+        grid-template-columns: 1fr;
+      }
+
+      .character-image {
+        height: 280px;
+      }
+
+      .hero-content {
+        padding: 56px 26px;
+      }
+
+      .hero h1 {
+        font-size: 46px;
+      }
+
+      .section-title {
+        font-size: 40px;
+      }
+
+      .quote-text {
+        font-size: 28px;
+      }
+
+      .nav-container {
+        gap: 14px;
+      }
+
+      .logo {
+        font-size: 17px;
+      }
+
+      .nav-links a {
+        font-size: 13px;
+        padding: 10px 11px;
+      }
+
+      .lang-switcher {
+        gap: 6px;
+      }
+
+      .lang-btn {
+        min-width: 44px;
+        padding: 9px 10px;
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 620px) {
+      :root {
+        --nav-height: 74px;
+      }
+
+      .nav-container {
+        padding: 0 12px;
+        gap: 10px;
+      }
+
+      .lang-switcher {
+        gap: 4px;
+      }
+
+      .hero h1 {
+        font-size: 38px;
+      }
+
+      .hero p,
+      .section-subtitle {
+        font-size: 16px;
+      }
+
+      .section-title {
+        font-size: 34px;
+      }
+
+      .quote-text {
+        font-size: 23px;
+      }
+
+      .facts-grid {
+        grid-template-columns: 1fr;
+      }
+
+      #toTop {
+        width: 52px;
+        height: 52px;
+        border-radius: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="parallax-scene" aria-hidden="true">
+    <div class="parallax-layer layer-stars"></div>
+    <div class="parallax-layer layer-glow-1"></div>
+    <div class="parallax-layer layer-glow-2"></div>
+    <div class="parallax-layer layer-glow-3"></div>
+  </div>
+  <div class="gradient-orb orb-1"></div>
+  <div class="gradient-orb orb-2"></div>
+  <div class="gradient-orb orb-3"></div>
+
+  <div class="page">
+    <nav id="navbar">
+      <div class="nav-container">
+        <div class="logo">
+          <i class="fa-solid fa-wand-sparkles"></i>
+          <span>The Wizard of Oz</span>
+        </div>
+
+        <div class="nav-links" id="navLinks">
+          <a href="#hero" class="active">Главная</a>
+          <a href="#about">О произведении</a>
+          <a href="#characters">Персонажи</a>
+          <a href="#slider">Галерея</a>
+          <a href="#quotes">Цитаты</a>
+          <a href="#facts">Факты</a>
+          <a href="#final">Итог</a>
+        </div>
+
+        <div class="lang-switcher" aria-label="Language switcher">
+          <button class="lang-btn active" data-lang="ru" type="button">RU</button>
+          <button class="lang-btn" data-lang="en" type="button">EN</button>
+          <button class="lang-btn" data-lang="zh" type="button">中文</button>
+        </div>
+      </div>
+    </nav>
+
+    <header class="hero" id="hero">
+      <div class="hero-card reveal show">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <i class="fa-solid fa-star"></i>
+            Волшебная сайт-презентация на русском языке
+          </div>
+
+          <h1>The Wizard of Oz</h1>
+
+          <p>
+            Перед вами современный сайт-презентация по теме <strong>«Волшебник страны Оз»</strong>.
+            Это не просто сказка о путешествии по дороге из жёлтого кирпича, а глубокая история
+            о дружбе, смелости, добре, вере в себя и поиске настоящих жизненных ценностей.
+            Именно поэтому произведение остаётся интересным и важным для читателей уже много лет.
+          </p>
+
+          <p>
+            В центре сюжета находится Дороти — добрая и искренняя девочка, которая после урагана
+            попадает в удивительный мир. На пути к Изумрудному городу она встречает Страшилу,
+            Железного Дровосека и Трусливого Льва. Каждый из них думает, что ему чего-то не хватает,
+            но постепенно становится ясно: ум, сердце и храбрость уже были внутри них с самого начала.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#characters" class="btn btn-primary">
+              <i class="fa-solid fa-crown"></i>
+              Смотреть персонажей
+            </a>
+            <a href="#quotes" class="btn btn-secondary">
+              <i class="fa-solid fa-quote-left"></i>
+              Открыть цитаты
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="about">
+        <div class="container">
+          <h2 class="section-title reveal">О произведении</h2>
+          <p class="section-subtitle reveal">
+            «Волшебник страны Оз» — это произведение, которое сочетает в себе атмосферу сказки,
+            структуру большого приключения и важный внутренний смысл. Эта история кажется яркой
+            и волшебной, но одновременно учит человека понимать свои сильные стороны, ценить близких
+            и не искать чудо только снаружи, потому что многое уже находится внутри нас самих.
+          </p>
+
+          <div class="about-layout">
+            <div class="glass-panel about-main reveal tilt-card">
+              <h3>Почему эта история считается классикой</h3>
+              <p>
+                Сказка о стране Оз стала известной не только из-за волшебных образов и красивого сюжета,
+                но и благодаря сильной идее. Путешествие Дороти оказывается не просто дорогой к дому,
+                а настоящим путём к пониманию себя и окружающих. Её друзья тоже проходят личное изменение:
+                они учатся видеть в себе то, чего раньше не замечали.
+              </p>
+              <p>
+                В произведении очень удачно сочетаются приключение, сказочная атмосфера, символические
+                персонажи и понятные жизненные истины. Именно поэтому история подходит как для школьной
+                презентации, так и для более глубокого литературного анализа. Каждый герой здесь отражает
+                определённую черту характера, а каждая остановка на пути имеет смысл.
+              </p>
+              <p>
+                Особенно важной является мысль о том, что человек часто недооценивает самого себя.
+                Страшила уже умеет думать, Железный Дровосек уже умеет чувствовать, а Лев уже способен
+                на смелые поступки. Это делает произведение вдохновляющим и очень человечным.
+              </p>
+              <div class="road"></div>
+            </div>
+
+            <div class="glass-panel about-side reveal tilt-card">
+              <h3>Ключевые особенности</h3>
+
+              <div class="feature-list">
+                <div class="feature-item tilt-card">
+                  <div class="feature-icon"><i class="fa-solid fa-book-open"></i></div>
+                  <div>
+                    <h4>Сказка с глубоким смыслом</h4>
+                    <p>История выглядит лёгкой, но на самом деле говорит о взрослении, характере и внутренней силе.</p>
+                  </div>
+                </div>
+
+                <div class="feature-item tilt-card">
+                  <div class="feature-icon"><i class="fa-solid fa-road"></i></div>
+                  <div>
+                    <h4>Путешествие как символ</h4>
+                    <p>Дорога из жёлтого кирпича символизирует движение к цели, надежду и поиск важных ответов.</p>
+                  </div>
+                </div>
+
+                <div class="feature-item tilt-card">
+                  <div class="feature-icon"><i class="fa-solid fa-heart"></i></div>
+                  <div>
+                    <h4>Дружба и взаимопомощь</h4>
+                    <p>Герои не просто идут рядом, а поддерживают друг друга и становятся сильнее вместе.</p>
+                  </div>
+                </div>
+
+                <div class="feature-item tilt-card">
+                  <div class="feature-icon"><i class="fa-solid fa-house"></i></div>
+                  <div>
+                    <h4>Главная ценность — дом</h4>
+                    <p>Произведение напоминает, что дом, любовь и близкие люди часто важнее любого волшебства.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="characters">
+        <div class="container">
+          <h2 class="section-title reveal">Главные персонажи</h2>
+          <p class="section-subtitle reveal">
+            Ниже представлены основные герои произведения. У каждого персонажа есть своя роль,
+            свой внутренний конфликт и своё значение в общей идее сказки.
+          </p>
+
+          <div class="characters-grid">
+            <article class="character-card reveal tilt-card">
+              <div class="character-image">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Judy_Garland_in_The_Wizard_of_Oz.jpg" alt="Дороти">
+              </div>
+              <div class="character-content">
+                <div class="character-label"><i class="fa-solid fa-star"></i> Главная героиня</div>
+                <h3>Дороти</h3>
+                <p>
+                  Дороти — добрая, искренняя и смелая девочка, которая оказывается в волшебной стране
+                  после урагана. Несмотря на неожиданную ситуацию, она не теряет человечности,
+                  заботится о друзьях и сохраняет желание вернуться домой.
+                </p>
+                <p>
+                  Её образ символизирует чистоту, верность, надежду и внутреннюю стойкость.
+                  Именно через неё раскрывается мысль о том, что дом — это не просто место,
+                  а источник любви, безопасности и настоящего счастья.
+                </p>
+                <div class="character-tags">
+                  <span>доброта</span>
+                  <span>верность</span>
+                  <span>надежда</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="character-card reveal tilt-card">
+              <div class="character-image">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Ray_Bolger_as_the_Scarecrow.jpg" alt="Страшила">
+              </div>
+              <div class="character-content">
+                <div class="character-label"><i class="fa-solid fa-brain"></i> Символ разума</div>
+                <h3>Страшила</h3>
+                <p>
+                  Страшила считает, что у него нет мозгов, и мечтает получить ум у Волшебника Оз.
+                  Но в течение путешествия он постоянно показывает сообразительность, здравый смысл
+                  и способность находить решения в трудные моменты.
+                </p>
+                <p>
+                  Его образ показывает, что человек нередко сомневается в себе, даже когда уже
+                  обладает важными качествами. Страшила напоминает, что настоящий ум проявляется
+                  прежде всего в поступках и решениях.
+                </p>
+                <div class="character-tags">
+                  <span>ум</span>
+                  <span>логика</span>
+                  <span>сообразительность</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="character-card reveal tilt-card">
+              <div class="character-image">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/34/Jack_Haley_as_Tin_Man.jpg" alt="Железный Дровосек">
+              </div>
+              <div class="character-content">
+                <div class="character-label"><i class="fa-solid fa-heart"></i> Символ сердца</div>
+                <h3>Железный Дровосек</h3>
+                <p>
+                  Железный Дровосек уверен, что без сердца он не способен чувствовать по-настоящему.
+                  Однако на протяжении всей истории он демонстрирует сострадание, нежность,
+                  отзывчивость и искреннюю заботу о друзьях.
+                </p>
+                <p>
+                  Его путь помогает понять, что доброе сердце измеряется не словами, а поступками.
+                  Этот герой делает историю особенно тёплой и подчёркивает важность человечности.
+                </p>
+                <div class="character-tags">
+                  <span>сердце</span>
+                  <span>доброта</span>
+                  <span>сочувствие</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="character-card reveal tilt-card">
+              <div class="character-image">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/Bert_Lahr_as_Cowardly_Lion.jpg" alt="Трусливый Лев">
+              </div>
+              <div class="character-content">
+                <div class="character-label"><i class="fa-solid fa-shield-heart"></i> Символ храбрости</div>
+                <h3>Трусливый Лев</h3>
+                <p>
+                  Лев считает себя трусом и уверен, что ему не хватает мужества. Но на деле он
+                  не раз совершает смелые поступки, особенно когда нужно защитить друзей или
+                  преодолеть страх ради общего дела.
+                </p>
+                <p>
+                  Его образ показывает важную мысль: смелость — это не полное отсутствие страха,
+                  а способность действовать, даже когда страшно. Именно это делает Льва одним
+                  из самых трогательных персонажей истории.
+                </p>
+                <div class="character-tags">
+                  <span>храбрость</span>
+                  <span>сила духа</span>
+                  <span>преданность</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="slider">
+        <div class="container">
+          <h2 class="section-title reveal">Галерея и слайдер</h2>
+          <p class="section-subtitle reveal">
+            Этот блок показывает волшебную атмосферу истории. Слайды можно листать кнопками,
+            точками внизу или ждать автоматической смены.
+          </p>
+
+          <div class="slider-wrap">
+            <div class="slider-box reveal">
+              <div class="slides" id="slides">
+                <div class="slide active">
+                  <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1600&q=80" alt="Жёлтая дорога">
+                  <div class="slide-overlay">
+                    <div class="slide-caption">
+                      <h4>Дорога из жёлтого кирпича</h4>
+                      <p>Самый узнаваемый символ произведения. Она означает движение к цели, надежду и путь к внутреннему открытию.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="slide">
+                  <img src="https://images.unsplash.com/photo-1473773508845-188df298d2d1?auto=format&fit=crop&w=1600&q=80" alt="Изумрудный город">
+                  <div class="slide-overlay">
+                    <div class="slide-caption">
+                      <h4>Изумрудный город</h4>
+                      <p>Место, куда стремятся герои, надеясь найти ответы. Город символизирует мечту, ожидание и иллюзию величия.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="slide">
+                  <img src="https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1600&q=80" alt="Волшебство и приключения">
+                  <div class="slide-overlay">
+                    <div class="slide-caption">
+                      <h4>Волшебство и испытания</h4>
+                      <p>На протяжении путешествия герои сталкиваются с опасностями, и именно в этих моментах раскрываются их лучшие качества.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="slider-controls">
+                <div class="slider-arrows">
+                  <button class="slider-btn" id="prevSlide"><i class="fa-solid fa-chevron-left"></i></button>
+                  <button class="slider-btn" id="nextSlide"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+                <div class="slider-dots" id="sliderDots"></div>
+              </div>
+            </div>
+
+            <div class="glass-panel slider-text reveal tilt-card">
+              <h3>Что показывает этот раздел</h3>
+              <p>
+                Галерея помогает передать визуальное настроение произведения. Мир страны Оз кажется
+                красивым, ярким и даже сказочно идеальным, но за внешним блеском скрываются испытания,
+                выбор и важные жизненные вопросы.
+              </p>
+              <p>
+                Именно поэтому визуальные образы так важны для презентации: дорога, город, магия,
+                свет и движение помогают лучше передать атмосферу истории и сделать выступление более эффектным.
+              </p>
+
+              <div class="slider-points">
+                <div class="slider-point">
+                  <i class="fa-solid fa-sun"></i>
+                  <div>
+                    <strong>Яркая сказочная атмосфера</strong>
+                    <p>Произведение легко запоминается благодаря сильным образам и контрасту между реальностью и волшебным миром.</p>
+                  </div>
+                </div>
+
+                <div class="slider-point">
+                  <i class="fa-solid fa-gem"></i>
+                  <div>
+                    <strong>Символичность пространства</strong>
+                    <p>Каждая локация подчеркивает путь героев к мечте, к пониманию себя и к моральному итогу сказки.</p>
+                  </div>
+                </div>
+
+                <div class="slider-point">
+                  <i class="fa-solid fa-film"></i>
+                  <div>
+                    <strong>Идеально для презентации</strong>
+                    <p>Слайдер делает сайт живым, современным и более похожим на дорогую интерактивную демонстрацию.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="quotes">
+        <div class="container">
+          <h2 class="section-title reveal">Появляющиеся цитаты</h2>
+          <p class="section-subtitle reveal">
+            В этом блоке цитаты появляются плавно и могут меняться автоматически или по кнопке.
+            Это делает сайт динамичным и красивым.
+          </p>
+
+          <div class="quotes-layout">
+            <div class="glass-panel quote-display reveal tilt-card">
+              <div class="quote-badge">
+                <i class="fa-solid fa-feather-pointed"></i>
+                Ключевая мысль истории
+              </div>
+
+              <div class="quote-text show" id="quoteText">«Нет места лучше дома.»</div>
+              <div class="quote-author" id="quoteAuthor">— Главный смысл путешествия Дороти</div>
+
+              <div class="quote-buttons">
+                <button class="btn btn-primary" id="nextQuoteBtn">
+                  <i class="fa-solid fa-wand-magic-sparkles"></i>
+                  Следующая цитата
+                </button>
+                <button class="btn btn-secondary" id="randomQuoteBtn">
+                  <i class="fa-solid fa-shuffle"></i>
+                  Случайная цитата
+                </button>
+              </div>
+            </div>
+
+            <div class="glass-panel quotes-side reveal tilt-card">
+              <h3>Почему цитаты важны</h3>
+              <p>
+                Цитаты украшают презентацию и помогают точнее передать главную мысль произведения.
+                Они делают сайт не просто набором текста, а полноценной литературной работой
+                с акцентом на смысл и эмоции.
+              </p>
+
+              <div class="mini-card">
+                <h4><i class="fa-solid fa-lightbulb"></i> Идея №1</h4>
+                <p>Человек может искать силу, ум или смелость снаружи, хотя они уже существуют внутри него.</p>
+              </div>
+
+              <div class="mini-card">
+                <h4><i class="fa-solid fa-people-group"></i> Идея №2</h4>
+                <p>Дружба и взаимная поддержка помогают пройти путь, который одному пройти было бы намного труднее.</p>
+              </div>
+
+              <div class="mini-card">
+                <h4><i class="fa-solid fa-house"></i> Идея №3</h4>
+                <p>Дом и близкие люди остаются главной ценностью, даже если вокруг человека есть чудеса и блестящие обещания.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="facts">
+        <div class="container">
+          <h2 class="section-title reveal">Интересные факты</h2>
+          <p class="section-subtitle reveal">
+            Эти карточки можно использовать как финальный блок школьной презентации,
+            чтобы сделать выступление более насыщенным и запоминающимся.
+          </p>
+
+          <div class="facts-grid">
+            <div class="fact-card reveal tilt-card">
+              <div class="fact-icon"><i class="fa-solid fa-book"></i></div>
+              <div class="fact-number">1</div>
+              <p>Произведение стало одной из самых известных сказок в мире и сохранило популярность на многие годы.</p>
+            </div>
+
+            <div class="fact-card reveal tilt-card">
+              <div class="fact-icon"><i class="fa-solid fa-road"></i></div>
+              <div class="fact-number">2</div>
+              <p>Дорога из жёлтого кирпича стала символом сказочного пути к цели и к исполнению мечты.</p>
+            </div>
+
+            <div class="fact-card reveal tilt-card">
+              <div class="fact-icon"><i class="fa-solid fa-masks-theater"></i></div>
+              <div class="fact-number">3</div>
+              <p>Каждый главный герой отражает определённое качество человека: ум, сердце, смелость и верность.</p>
+            </div>
+
+            <div class="fact-card reveal tilt-card">
+              <div class="fact-icon"><i class="fa-solid fa-star"></i></div>
+              <div class="fact-number">4</div>
+              <p>Главная идея истории заключается в том, что человеку важно поверить в себя и ценить то, что у него уже есть.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="final">
+        <div class="container">
+          <div class="glass-panel final-panel reveal tilt-card">
+            <h3>Итог</h3>
+            <p>
+              «Волшебник страны Оз» — это не просто сказка о магии и приключениях, а произведение
+              о человеке, его характере, его страхах и его возможностях. История показывает,
+              что дружба делает нас сильнее, доброта делает нас лучше, а уверенность в себе помогает
+              идти вперёд даже тогда, когда путь кажется трудным и неизвестным.
+            </p>
+            <p>
+              Именно поэтому эта тема отлично подходит для красивой школьной презентации:
+              она яркая, запоминающаяся и одновременно глубокая по смыслу.
+            </p>
+
+            <div class="final-actions">
+              <a href="#hero" class="btn btn-primary">
+                <i class="fa-solid fa-arrow-up"></i>
+                Вернуться в начало
+              </a>
+              <a href="#characters" class="btn btn-secondary">
+                <i class="fa-solid fa-images"></i>
+                Ещё раз посмотреть героев
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      Сайт-презентация по теме <strong>The Wizard of Oz</strong> • HTML, CSS, JavaScript • Премиум версия
+    </footer>
+  </div>
+
+  <button id="toTop" aria-label="Наверх">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  
+  <script>
+    const navbar = document.getElementById("navbar");
+    const toTop = document.getElementById("toTop");
+    const reveals = document.querySelectorAll(".reveal");
+    const navAnchors = document.querySelectorAll(".nav-links a");
+    const sections = document.querySelectorAll("header[id], section[id]");
+    const langButtons = document.querySelectorAll(".lang-btn");
+
+    const logoText = document.querySelector(".logo span");
+    const heroBadge = document.querySelector(".hero-badge");
+    const heroTitle = document.querySelector(".hero h1");
+    const heroParagraphs = document.querySelectorAll(".hero-content > p");
+    const heroButtons = document.querySelectorAll(".hero-buttons a");
+
+    const aboutSection = document.getElementById("about");
+    const aboutMain = aboutSection.querySelector(".about-main");
+    const aboutSide = aboutSection.querySelector(".about-side");
+    const aboutFeatureItems = aboutSection.querySelectorAll(".feature-item");
+
+    const charactersSection = document.getElementById("characters");
+    const characterCards = charactersSection.querySelectorAll(".character-card");
+
+    const sliderSection = document.getElementById("slider");
+    const slideCards = sliderSection.querySelectorAll(".slide");
+    const sliderTextCard = sliderSection.querySelector(".slider-text");
+    const sliderTextParagraphs = sliderTextCard.querySelectorAll(":scope > p");
+    const sliderPoints = sliderSection.querySelectorAll(".slider-point");
+
+    const quotesSection = document.getElementById("quotes");
+    const quoteBadge = quotesSection.querySelector(".quote-badge");
+    const quotesSide = quotesSection.querySelector(".quotes-side");
+    const quotesSideParagraph = quotesSide.querySelector(":scope > p");
+    const miniCards = quotesSide.querySelectorAll(".mini-card");
+
+    const factsSection = document.getElementById("facts");
+    const factCards = factsSection.querySelectorAll(".fact-card");
+
+    const finalSection = document.getElementById("final");
+    const finalPanel = finalSection.querySelector(".final-panel");
+    const finalParagraphs = finalPanel.querySelectorAll(":scope > p");
+    const finalActions = finalPanel.querySelectorAll(".final-actions a");
+
+    const footerEl = document.querySelector("footer");
+
+    const translations = {
+      ru: {
+        docTitle: "The Wizard of Oz — Премиум сайт-презентация",
+        logo: "The Wizard of Oz",
+        nav: ["Главная", "О произведении", "Персонажи", "Галерея", "Цитаты", "Факты", "Итог"],
+        heroBadge: "Волшебная сайт-презентация на русском языке",
+        heroTitle: "The Wizard of Oz",
+        heroParagraphs: [
+          "Перед вами современный сайт-презентация по теме <strong>«Волшебник страны Оз»</strong>. Это не просто сказка о путешествии по дороге из жёлтого кирпича, а глубокая история о дружбе, смелости, добре, вере в себя и поиске настоящих жизненных ценностей. Именно поэтому произведение остаётся интересным и важным для читателей уже много лет.",
+          "В центре сюжета находится Дороти — добрая и искренняя девочка, которая после урагана попадает в удивительный мир. На пути к Изумрудному городу она встречает Страшилу, Железного Дровосека и Трусливого Льва. Каждый из них думает, что ему чего-то не хватает, но постепенно становится ясно: ум, сердце и храбрость уже были внутри них с самого начала."
+        ],
+        heroButtons: ["Смотреть персонажей", "Открыть цитаты"],
+        sections: {
+          about: {
+            title: "О произведении",
+            subtitle: "«Волшебник страны Оз» — это произведение, которое сочетает в себе атмосферу сказки, структуру большого приключения и важный внутренний смысл. Эта история кажется яркой и волшебной, но одновременно учит человека понимать свои сильные стороны, ценить близких и не искать чудо только снаружи, потому что многое уже находится внутри нас самих.",
+            mainTitle: "Почему эта история считается классикой",
+            mainParagraphs: [
+              "Сказка о стране Оз стала известной не только из-за волшебных образов и красивого сюжета, но и благодаря сильной идее. Путешествие Дороти оказывается не просто дорогой к дому, а настоящим путём к пониманию себя и окружающих. Её друзья тоже проходят личное изменение: они учатся видеть в себе то, чего раньше не замечали.",
+              "В произведении очень удачно сочетаются приключение, сказочная атмосфера, символические персонажи и понятные жизненные истины. Именно поэтому история подходит как для школьной презентации, так и для более глубокого литературного анализа. Каждый герой здесь отражает определённую черту характера, а каждая остановка на пути имеет смысл.",
+              "Особенно важной является мысль о том, что человек часто недооценивает самого себя. Страшила уже умеет думать, Железный Дровосек уже умеет чувствовать, а Лев уже способен на смелые поступки. Это делает произведение вдохновляющим и очень человечным."
+            ],
+            sideTitle: "Ключевые особенности",
+            features: [
+              ["Сказка с глубоким смыслом", "История выглядит лёгкой, но на самом деле говорит о взрослении, характере и внутренней силе."],
+              ["Путешествие как символ", "Дорога из жёлтого кирпича символизирует движение к цели, надежду и поиск важных ответов."],
+              ["Дружба и взаимопомощь", "Герои не просто идут рядом, а поддерживают друг друга и становятся сильнее вместе."],
+              ["Главная ценность — дом", "Произведение напоминает, что дом, любовь и близкие люди часто важнее любого волшебства."]
+            ]
+          },
+          characters: {
+            title: "Главные персонажи",
+            subtitle: "Ниже представлены основные герои произведения. У каждого персонажа есть своя роль, свой внутренний конфликт и своё значение в общей идее сказки.",
+            cards: [
+              {
+                label: "Главная героиня",
+                title: "Дороти",
+                paragraphs: [
+                  "Дороти — добрая, искренняя и смелая девочка, которая оказывается в волшебной стране после урагана. Несмотря на неожиданную ситуацию, она не теряет человечности, заботится о друзьях и сохраняет желание вернуться домой.",
+                  "Её образ символизирует чистоту, верность, надежду и внутреннюю стойкость. Именно через неё раскрывается мысль о том, что дом — это не просто место, а источник любви, безопасности и настоящего счастья."
+                ],
+                tags: ["доброта", "верность", "надежда"]
+              },
+              {
+                label: "Символ разума",
+                title: "Страшила",
+                paragraphs: [
+                  "Страшила считает, что у него нет мозгов, и мечтает получить ум у Волшебника Оз. Но в течение путешествия он постоянно показывает сообразительность, здравый смысл и способность находить решения в трудные моменты.",
+                  "Его образ показывает, что человек нередко сомневается в себе, даже когда уже обладает важными качествами. Страшила напоминает, что настоящий ум проявляется прежде всего в поступках и решениях."
+                ],
+                tags: ["ум", "логика", "сообразительность"]
+              },
+              {
+                label: "Символ сердца",
+                title: "Железный Дровосек",
+                paragraphs: [
+                  "Железный Дровосек уверен, что без сердца он не способен чувствовать по-настоящему. Однако на протяжении всей истории он демонстрирует сострадание, нежность, отзывчивость и искреннюю заботу о друзьях.",
+                  "Его путь помогает понять, что доброе сердце измеряется не словами, а поступками. Этот герой делает историю особенно тёплой и подчёркивает важность человечности."
+                ],
+                tags: ["сердце", "доброта", "сочувствие"]
+              },
+              {
+                label: "Символ храбрости",
+                title: "Трусливый Лев",
+                paragraphs: [
+                  "Лев считает себя трусом и уверен, что ему не хватает мужества. Но на деле он не раз совершает смелые поступки, особенно когда нужно защитить друзей или преодолеть страх ради общего дела.",
+                  "Его образ показывает важную мысль: смелость — это не полное отсутствие страха, а способность действовать, даже когда страшно. Именно это делает Льва одним из самых трогательных персонажей истории."
+                ],
+                tags: ["храбрость", "сила духа", "преданность"]
+              }
+            ]
+          },
+          slider: {
+            title: "Галерея и слайдер",
+            subtitle: "Этот блок показывает волшебную атмосферу истории. Слайды можно листать кнопками, точками внизу или ждать автоматической смены.",
+            slides: [
+              ["Дорога из жёлтого кирпича", "Самый узнаваемый символ произведения. Она означает движение к цели, надежду и путь к внутреннему открытию."],
+              ["Изумрудный город", "Место, куда стремятся герои, надеясь найти ответы. Город символизирует мечту, ожидание и иллюзию величия."],
+              ["Волшебство и испытания", "На протяжении путешествия герои сталкиваются с опасностями, и именно в этих моментах раскрываются их лучшие качества."]
+            ],
+            textTitle: "Что показывает этот раздел",
+            textParagraphs: [
+              "Галерея помогает передать визуальное настроение произведения. Мир страны Оз кажется красивым, ярким и даже сказочно идеальным, но за внешним блеском скрываются испытания, выбор и важные жизненные вопросы.",
+              "Именно поэтому визуальные образы так важны для презентации: дорога, город, магия, свет и движение помогают лучше передать атмосферу истории и сделать выступление более эффектным."
+            ],
+            points: [
+              ["Яркая сказочная атмосфера", "Произведение легко запоминается благодаря сильным образам и контрасту между реальностью и волшебным миром."],
+              ["Символичность пространства", "Каждая локация подчеркивает путь героев к мечте, к пониманию себя и к моральному итогу сказки."],
+              ["Идеально для презентации", "Слайдер делает сайт живым, современным и более похожим на дорогую интерактивную демонстрацию."]
+            ]
+          },
+          quotes: {
+            title: "Появляющиеся цитаты",
+            subtitle: "В этом блоке цитаты появляются плавно и могут меняться автоматически или по кнопке. Это делает сайт динамичным и красивым.",
+            badge: "Ключевая мысль истории",
+            nextBtn: "Следующая цитата",
+            randomBtn: "Случайная цитата",
+            sideTitle: "Почему цитаты важны",
+            sideParagraph: "Цитаты украшают презентацию и помогают точнее передать главную мысль произведения. Они делают сайт не просто набором текста, а полноценной литературной работой с акцентом на смысл и эмоции.",
+            miniCards: [
+              ["Идея №1", "Человек может искать силу, ум или смелость снаружи, хотя они уже существуют внутри него."],
+              ["Идея №2", "Дружба и взаимная поддержка помогают пройти путь, который одному пройти было бы намного труднее."],
+              ["Идея №3", "Дом и близкие люди остаются главной ценностью, даже если вокруг человека есть чудеса и блестящие обещания."]
+            ]
+          },
+          facts: {
+            title: "Интересные факты",
+            subtitle: "Эти карточки можно использовать как финальный блок школьной презентации, чтобы сделать выступление более насыщенным и запоминающимся.",
+            cards: [
+              "Произведение стало одной из самых известных сказок в мире и сохранило популярность на многие годы.",
+              "Дорога из жёлтого кирпича стала символом сказочного пути к цели и к исполнению мечты.",
+              "Каждый главный герой отражает определённое качество человека: ум, сердце, смелость и верность.",
+              "Главная идея истории заключается в том, что человеку важно поверить в себя и ценить то, что у него уже есть."
+            ]
+          },
+          final: {
+            title: "Итог",
+            paragraphs: [
+              "«Волшебник страны Оз» — это не просто сказка о магии и приключениях, а произведение о человеке, его характере, его страхах и его возможностях. История показывает, что дружба делает нас сильнее, доброта делает нас лучше, а уверенность в себе помогает идти вперёд даже тогда, когда путь кажется трудным и неизвестным.",
+              "Именно поэтому эта тема отлично подходит для красивой школьной презентации: она яркая, запоминающаяся и одновременно глубокая по смыслу."
+            ],
+            actions: ["Вернуться в начало", "Ещё раз посмотреть героев"]
+          }
+        },
+        footer: "Сайт-презентация по теме <strong>The Wizard of Oz</strong> • HTML, CSS, JavaScript • Премиум версия",
+        toTopLabel: "Наверх",
+        quotes: [
+          ["«Нет места лучше дома.»", "— Дороти"],
+          ["«Иногда человек ищет то, что уже давно есть внутри него.»", "— О скрытых качествах героев"],
+          ["«Смелость — это идти вперёд даже тогда, когда тебе страшно.»", "— Трусливый Лев"],
+          ["«Доброе сердце проявляется не в словах, а в поступках.»", "— Железный Дровосек"],
+          ["«Настоящая дружба делает трудный путь легче.»", "— О команде Дороти"],
+          ["«Ум становится виден тогда, когда нужно принять решение.»", "— Страшила"],
+          ["«Дом — это не просто место, а то, где тебя любят и ждут.»", "— Главная идея истории"],
+          ["«Человек часто сильнее, чем сам о себе думает.»", "— Смысл путешествия"],
+          ["«Храбрость не означает отсутствие страха.»", "— О Льве"],
+          ["«Иногда чудо начинается с веры в себя.»", "— Смысл сказки"],
+          ["«Каждое испытание раскрывает характер.»", "— О пути героев"],
+          ["«Доброта делает даже самый трудный путь светлее.»", "— О Дороти"],
+          ["«Настоящая сила прячется в сердце человека.»", "— Главный вывод"],
+          ["«Путь к мечте меняет человека.»", "— О дороге из жёлтого кирпича"],
+          ["«Человек не всегда сразу замечает свои лучшие качества.»", "— Основная мысль"],
+          ["«Тот, кто помогает другим, уже обладает большим сердцем.»", "— О Железном Дровосеке"],
+          ["«Мужество рождается в момент выбора, а не в момент покоя.»", "— О смелости"],
+          ["«Иногда ответ находится не в волшебнике, а в тебе самом.»", "— О Волшебнике Оз"],
+          ["«Дорога важна не меньше, чем конечная цель.»", "— Философия путешествия"],
+          ["«Друзья помогают увидеть в себе то, чего раньше не замечал.»", "— О дружбе"],
+          ["«Счастье может быть ближе, чем кажется.»", "— Итог сказки"],
+          ["«Верность и доброта сильнее страха.»", "— Главный моральный акцент"],
+          ["«Не нужно быть идеальным, чтобы быть ценным.»", "— О героях истории"],
+          ["«Настоящее волшебство — это человечность.»", "— Главная идея произведения"],
+          ["«Иногда именно путь домой помогает понять, кто ты есть.»", "— Финальный смысл"]
+        ]
+      },
+      en: {
+        docTitle: "The Wizard of Oz — Premium Presentation Website",
+        logo: "The Wizard of Oz",
+        nav: ["Home", "About", "Characters", "Gallery", "Quotes", "Facts", "Final"],
+        heroBadge: "Magical presentation website in English",
+        heroTitle: "The Wizard of Oz",
+        heroParagraphs: [
+          "This is a modern presentation website dedicated to <strong>“The Wizard of Oz”</strong>. It is not just a fairy tale about a journey along the yellow brick road, but a profound story about friendship, courage, kindness, self-belief, and the search for true values. That is why the work remains meaningful and engaging for readers even today.",
+          "At the center of the story is Dorothy, a kind and sincere girl who is carried by a cyclone into a wondrous world. On her way to the Emerald City she meets the Scarecrow, the Tin Woodman, and the Cowardly Lion. Each of them believes something important is missing inside, but little by little it becomes clear that intelligence, heart, and bravery were with them all along."
+        ],
+        heroButtons: ["View characters", "Open quotes"],
+        sections: {
+          about: {
+            title: "About the work",
+            subtitle: "“The Wizard of Oz” is a story that combines the atmosphere of a fairy tale, the structure of a great adventure, and an important inner meaning. It feels bright and magical, yet it also teaches people to recognize their strengths, value their loved ones, and stop searching for miracles only outside themselves, because so much already exists within us.",
+            mainTitle: "Why this story is considered a classic",
+            mainParagraphs: [
+              "The tale of Oz became famous not only because of its magical imagery and beautiful plot, but also because of its strong idea. Dorothy’s journey is not merely a road back home; it is a path toward understanding herself and others. Her companions also go through inner change as they learn to see in themselves what they had failed to notice before.",
+              "The work skillfully combines adventure, fairy-tale atmosphere, symbolic characters, and clear life lessons. That is why it suits both a school presentation and a deeper literary analysis. Every hero reflects a certain character trait, and every stop along the road carries meaning.",
+              "One of the most important ideas is that people often underestimate themselves. The Scarecrow already knows how to think, the Tin Woodman already knows how to feel, and the Lion is already capable of brave actions. This makes the work inspiring and deeply human."
+            ],
+            sideTitle: "Key features",
+            features: [
+              ["A fairy tale with deep meaning", "The story feels light, but in reality it speaks about growing up, character, and inner strength."],
+              ["A journey as symbol", "The yellow brick road symbolizes movement toward a goal, hope, and the search for important answers."],
+              ["Friendship and mutual help", "The heroes do not simply walk together; they support one another and become stronger as a group."],
+              ["Home as the greatest value", "The story reminds us that home, love, and the people closest to us often matter more than any magic."]
+            ]
+          },
+          characters: {
+            title: "Main characters",
+            subtitle: "Below are the main characters of the story. Each of them has a distinct role, an inner conflict, and a special meaning within the tale’s overall idea.",
+            cards: [
+              {
+                label: "Main heroine",
+                title: "Dorothy",
+                paragraphs: [
+                  "Dorothy is a kind, sincere, and brave girl who finds herself in the magical land after a cyclone. Despite the unexpected circumstances, she does not lose her humanity, cares for her friends, and keeps her desire to return home.",
+                  "Her image symbolizes purity, loyalty, hope, and inner resilience. Through Dorothy the story reveals that home is not just a place, but a source of love, safety, and real happiness."
+                ],
+                tags: ["kindness", "loyalty", "hope"]
+              },
+              {
+                label: "Symbol of intellect",
+                title: "Scarecrow",
+                paragraphs: [
+                  "The Scarecrow believes he has no brain and dreams of receiving one from the Wizard. Yet throughout the journey he constantly shows wit, common sense, and the ability to find solutions in difficult moments.",
+                  "His character demonstrates that people often doubt themselves even when they already possess important qualities. The Scarecrow reminds us that true intelligence appears first of all in actions and decisions."
+                ],
+                tags: ["mind", "logic", "ingenuity"]
+              },
+              {
+                label: "Symbol of heart",
+                title: "Tin Woodman",
+                paragraphs: [
+                  "The Tin Woodman is convinced that without a heart he cannot truly feel. However, throughout the story he shows compassion, tenderness, responsiveness, and sincere care for his friends.",
+                  "His journey helps us understand that a good heart is measured not by words but by actions. This hero makes the story especially warm and emphasizes the importance of humanity."
+                ],
+                tags: ["heart", "kindness", "compassion"]
+              },
+              {
+                label: "Symbol of courage",
+                title: "Cowardly Lion",
+                paragraphs: [
+                  "The Lion considers himself a coward and is sure he lacks courage. In reality, he repeatedly performs brave deeds, especially when he needs to defend his friends or overcome fear for the sake of the group.",
+                  "His image expresses an important thought: courage is not the absence of fear, but the ability to act even when fear is present. That is what makes the Lion one of the most touching characters in the story."
+                ],
+                tags: ["courage", "fortitude", "devotion"]
+              }
+            ]
+          },
+          slider: {
+            title: "Gallery and slider",
+            subtitle: "This section shows the magical atmosphere of the story. You can switch slides with the buttons, the dots below, or simply wait for the automatic change.",
+            slides: [
+              ["The Yellow Brick Road", "The most recognizable symbol of the story. It represents movement toward a goal, hope, and the path to inner discovery."],
+              ["The Emerald City", "The place the heroes long to reach, hoping to find answers. The city symbolizes a dream, expectation, and the illusion of greatness."],
+              ["Magic and trials", "Throughout the journey the heroes face dangers, and it is in these moments that their best qualities are revealed."]
+            ],
+            textTitle: "What this section shows",
+            textParagraphs: [
+              "The gallery helps convey the visual mood of the work. The land of Oz appears beautiful, bright, and even ideally fairy-tale-like, but behind its outer shine lie trials, choices, and important life questions.",
+              "That is why visual images matter so much in a presentation: the road, the city, magic, light, and movement help express the story’s atmosphere more vividly and make the presentation more impressive."
+            ],
+            points: [
+              ["A vivid fairy-tale atmosphere", "The work is easy to remember because of its strong imagery and the contrast between reality and the magical world."],
+              ["Symbolic space", "Each location highlights the heroes’ path toward their dream, self-understanding, and the moral outcome of the tale."],
+              ["Perfect for a presentation", "The slider makes the site feel lively, modern, and more like an expensive interactive showcase."]
+            ]
+          },
+          quotes: {
+            title: "Appearing quotes",
+            subtitle: "In this section the quotes appear smoothly and can change automatically or by button click. That makes the website feel dynamic and visually rich.",
+            badge: "The key idea of the story",
+            nextBtn: "Next quote",
+            randomBtn: "Random quote",
+            sideTitle: "Why quotes matter",
+            sideParagraph: "Quotes decorate the presentation and help convey the main idea of the work more precisely. They turn the website from a simple block of text into a more literary and emotional experience.",
+            miniCards: [
+              ["Idea No. 1", "A person may search for strength, intelligence, or courage outside, even though these qualities already exist within."],
+              ["Idea No. 2", "Friendship and mutual support help one overcome a path that would be much harder to travel alone."],
+              ["Idea No. 3", "Home and loved ones remain the greatest value, even when a person is surrounded by wonders and dazzling promises."]
+            ]
+          },
+          facts: {
+            title: "Interesting facts",
+            subtitle: "These cards can be used as the final block of a school presentation to make the speech more informative and memorable.",
+            cards: [
+              "The work became one of the most famous fairy tales in the world and has remained popular for many years.",
+              "The yellow brick road became a symbol of the fairy-tale path toward a goal and the fulfillment of a dream.",
+              "Each main hero reflects a certain human quality: intelligence, heart, courage, and loyalty.",
+              "The central idea of the story is that a person should believe in themselves and value what they already have."
+            ]
+          },
+          final: {
+            title: "Final thoughts",
+            paragraphs: [
+              "“The Wizard of Oz” is not just a tale of magic and adventure, but a work about a human being, character, fears, and possibilities. The story shows that friendship makes us stronger, kindness makes us better, and self-confidence helps us move forward even when the road feels difficult and unknown.",
+              "That is why this topic is perfect for a beautiful school presentation: it is bright, memorable, and at the same time rich in meaning."
+            ],
+            actions: ["Back to top", "View the characters again"]
+          }
+        },
+        footer: "Presentation website on <strong>The Wizard of Oz</strong> • HTML, CSS, JavaScript • Premium version",
+        toTopLabel: "Back to top",
+        quotes: [
+          ["“There’s no place like home.”", "— Dorothy"],
+          ["“Sometimes people search for what has already been inside them all along.”", "— About the heroes’ hidden qualities"],
+          ["“Courage means moving forward even when you are afraid.”", "— The Cowardly Lion"],
+          ["“A good heart reveals itself in actions, not in words.”", "— The Tin Woodman"],
+          ["“True friendship makes a difficult road easier.”", "— About Dorothy’s team"],
+          ["“Intelligence becomes visible when a decision must be made.”", "— Scarecrow"],
+          ["“Home is not just a place, but where you are loved and awaited.”", "— The main idea of the story"],
+          ["“A person is often stronger than they think.”", "— The meaning of the journey"],
+          ["“Courage does not mean the absence of fear.”", "— About the Lion"],
+          ["“Sometimes magic begins with believing in yourself.”", "— The meaning of the tale"],
+          ["“Every trial reveals character.”", "— About the heroes’ path"],
+          ["“Kindness makes even the hardest road brighter.”", "— About Dorothy"],
+          ["“True strength hides in the human heart.”", "— Main conclusion"],
+          ["“The road toward a dream changes a person.”", "— About the yellow brick road"],
+          ["“People do not always notice their best qualities right away.”", "— Central idea"],
+          ["“Anyone who helps others already has a great heart.”", "— About the Tin Woodman"],
+          ["“Courage is born in the moment of choice, not in the moment of comfort.”", "— About bravery"],
+          ["“Sometimes the answer is not in the wizard but in yourself.”", "— About the Wizard of Oz"],
+          ["“The road matters no less than the destination.”", "— Philosophy of the journey"],
+          ["“Friends help us see in ourselves what we failed to notice before.”", "— About friendship"],
+          ["“Happiness may be closer than it seems.”", "— The tale’s conclusion"],
+          ["“Loyalty and kindness are stronger than fear.”", "— Main moral focus"],
+          ["“You do not have to be perfect to be valuable.”", "— About the heroes"],
+          ["“True magic is humanity.”", "— The main idea of the work"],
+          ["“Sometimes the journey home is what helps you understand who you are.”", "— Final meaning"]
+        ]
+      },
+      zh: {
+        docTitle: "绿野仙踪 — 高级展示网站",
+        logo: "绿野仙踪",
+        nav: ["首页", "作品介绍", "角色", "画廊", "引言", "事实", "总结"],
+        heroBadge: "中文版魔法展示网站",
+        heroTitle: "绿野仙踪",
+        heroParagraphs: [
+          "你现在看到的是一个以 <strong>《绿野仙踪》</strong> 为主题的现代展示网站。它不仅仅是一个沿着黄砖路前进的童话故事，更是一部关于友谊、勇气、善良、自我信念以及寻找真正人生价值的深刻作品。这也正是它至今仍然打动读者的原因。",
+          "故事的中心人物是多萝西。龙卷风把这位善良真诚的女孩带入了一个奇妙的世界。在前往翡翠城的路上，她遇见了稻草人、铁皮人和胆小狮。每个人都以为自己缺少某种最重要的品质，但后来他们逐渐明白：智慧、爱心和勇气其实一直都在自己心中。"
+        ],
+        heroButtons: ["查看角色", "打开引言"],
+        sections: {
+          about: {
+            title: "作品介绍",
+            subtitle: "《绿野仙踪》把童话氛围、伟大冒险的结构以及重要的内在意义结合在一起。这个故事看上去明亮而神奇，但同时也告诉我们：要认识自己的长处，珍惜身边的人，不要只在外部寻找奇迹，因为很多真正重要的东西其实早已存在于我们内心。",
+            mainTitle: "为什么这个故事被视为经典",
+            mainParagraphs: [
+              "奥兹国的故事之所以闻名，不仅因为它拥有神奇的形象和优美的情节，还因为它蕴含着强烈而清晰的思想。多萝西的旅程不仅是回家的道路，更是一条认识自己和理解他人的道路。她的伙伴们也经历了内在变化，他们学会看见自己原本没有意识到的品质。",
+              "这部作品巧妙地融合了冒险、童话氛围、象征性人物以及清晰的人生道理。因此，它既适合做学校展示，也适合进行更深入的文学分析。每一位角色都代表着某种性格特征，而旅途中的每一个阶段也都具有意义。",
+              "其中最重要的一点是：人往往会低估自己。稻草人本来就会思考，铁皮人本来就会感受，狮子本来就能做出勇敢的行为。正因为如此，这部作品显得鼓舞人心，也充满人性的温度。"
+            ],
+            sideTitle: "核心特点",
+            features: [
+              ["富有深意的童话", "故事看似轻松，却实际上讲述了成长、性格和内在力量。"],
+              ["旅程的象征意义", "黄砖路象征着通往目标的前进、希望以及寻找重要答案的过程。"],
+              ["友谊与互助", "角色们不仅一起前行，还彼此支持，并在同行中变得更强。"],
+              ["家是最重要的价值", "故事提醒我们：家、爱以及亲近的人，往往比任何魔法都更重要。"]
+            ]
+          },
+          characters: {
+            title: "主要角色",
+            subtitle: "下面展示的是故事中的主要人物。每个角色都有自己的作用、内心冲突，以及在整个故事思想中的特殊意义。",
+            cards: [
+              {
+                label: "女主角",
+                title: "多萝西",
+                paragraphs: [
+                  "多萝西是一位善良、真诚而勇敢的女孩。龙卷风把她带进了魔法世界。即使面临突如其来的变化，她也没有失去人性的温暖，一直照顾朋友，并始终希望回到家中。",
+                  "她象征着纯真、忠诚、希望和内在坚韧。通过她，故事告诉我们：家不仅仅是一个地方，更是爱、安全和真正幸福的来源。"
+                ],
+                tags: ["善良", "忠诚", "希望"]
+              },
+              {
+                label: "智慧的象征",
+                title: "稻草人",
+                paragraphs: [
+                  "稻草人认为自己没有脑子，因此梦想从魔法师那里得到智慧。但在旅途中，他不断表现出机智、常识以及在困难时刻做出判断的能力。",
+                  "他的形象说明：人们常常怀疑自己，即使他们早已拥有重要的品质。稻草人提醒我们，真正的智慧首先体现在行动和决定之中。"
+                ],
+                tags: ["智慧", "逻辑", "机敏"]
+              },
+              {
+                label: "爱心的象征",
+                title: "铁皮人",
+                paragraphs: [
+                  "铁皮人坚信自己没有心，因此无法真正感受情感。然而在整个故事中，他不断表现出同情、温柔、体贴以及对朋友真诚的关怀。",
+                  "他的旅程帮助我们明白：善良的心并不是靠言语证明的，而是靠行动。这个角色让整个故事更加温暖，也强调了人性的价值。"
+                ],
+                tags: ["爱心", "善良", "同情"]
+              },
+              {
+                label: "勇气的象征",
+                title: "胆小狮",
+                paragraphs: [
+                  "狮子认为自己是懦夫，坚信自己缺少勇气。可事实上，当他需要保护朋友或为了共同目标去战胜恐惧时，他一次又一次表现出真正的勇敢。",
+                  "他的形象表达了一个重要思想：勇气并不是没有恐惧，而是在恐惧存在的时候依然行动。也正因为如此，狮子成为故事中最令人动容的角色之一。"
+                ],
+                tags: ["勇气", "坚强", "忠诚"]
+              }
+            ]
+          },
+          slider: {
+            title: "画廊与轮播",
+            subtitle: "这一部分展示了故事的魔法氛围。你可以通过按钮、下方圆点切换幻灯片，也可以等待自动播放。",
+            slides: [
+              ["黄砖路", "这是整部作品最具代表性的象征，它意味着通向目标的前进、希望以及通向内心发现的道路。"],
+              ["翡翠城", "英雄们渴望到达的地方，希望在那里找到答案。这座城市象征梦想、期待以及辉煌表象下的幻觉。"],
+              ["魔法与考验", "在旅途中，角色们面对各种危险，而正是在这些时刻，他们最好的品质才真正显现出来。"]
+            ],
+            textTitle: "这一部分展示了什么",
+            textParagraphs: [
+              "画廊能够传达作品的视觉氛围。奥兹国看上去美丽、明亮，甚至带有理想化的童话色彩，但在耀眼外表之下，却隐藏着考验、选择以及重要的人生问题。",
+              "因此，视觉形象对于展示非常重要：道路、城市、魔法、光线与运动感，都能够更好地传达故事氛围，让整个演示更加出彩。"
+            ],
+            points: [
+              ["鲜明的童话氛围", "作品凭借强烈的视觉形象以及现实与魔法世界之间的对比而令人难忘。"],
+              ["空间的象征意义", "每一个地点都强调着角色走向梦想、自我理解以及故事道德结论的过程。"],
+              ["非常适合做展示", "轮播让网站更有生命力、更现代，也更像一个高级互动展示作品。"]
+            ]
+          },
+          quotes: {
+            title: "动态出现的引言",
+            subtitle: "在这一部分，引言会平滑出现，并且可以自动切换，也可以通过按钮手动切换。这使网站更有动感，也更美观。",
+            badge: "故事的核心思想",
+            nextBtn: "下一条引言",
+            randomBtn: "随机引言",
+            sideTitle: "为什么引言很重要",
+            sideParagraph: "引言能让展示更有文学感，也能更准确地传达作品的核心思想。它们让网站不再只是普通的文字内容，而成为更富情感和意味的表达。",
+            miniCards: [
+              ["想法 1", "人们可能在外部寻找力量、智慧或勇气，但这些品质其实早已存在于自己心中。"],
+              ["想法 2", "友谊和彼此支持能够帮助人走过一条独自前行会更加困难的道路。"],
+              ["想法 3", "即使周围充满奇迹和耀眼的承诺，家与亲近的人仍然是最重要的价值。"]
+            ]
+          },
+          facts: {
+            title: "有趣的事实",
+            subtitle: "这些卡片可以作为学校展示的最后一部分，让整个演讲更加丰富、更加容易被记住。",
+            cards: [
+              "这部作品成为世界上最著名的童话之一，并且多年保持着极高的人气。",
+              "黄砖路成为童话世界中通往目标与梦想实现之路的象征。",
+              "每一位主要角色都象征着某种人类品质：智慧、爱心、勇气和忠诚。",
+              "故事最核心的思想是：人应该相信自己，并珍惜自己已经拥有的一切。"
+            ]
+          },
+          final: {
+            title: "总结",
+            paragraphs: [
+              "《绿野仙踪》不仅仅是一个关于魔法和冒险的童话，它也是一部关于人、性格、恐惧与可能性的作品。这个故事告诉我们：友谊让人更强大，善良让人更美好，而自信能够帮助我们在道路艰难未知的时候继续前进。",
+              "正因为如此，这个主题非常适合作为一份漂亮的学校展示：它既明亮、生动、容易记住，同时又富有深刻意义。"
+            ],
+            actions: ["回到顶部", "再次查看角色"]
+          }
+        },
+        footer: "关于 <strong>绿野仙踪</strong> 的展示网站 • HTML、CSS、JavaScript • 高级版",
+        toTopLabel: "返回顶部",
+        quotes: [
+          ["“没有地方比家更好。”", "— 多萝西"],
+          ["“有时候，人寻找的东西其实一直就在自己心里。”", "— 关于角色隐藏的品质"],
+          ["“勇气，就是即使害怕也依然向前走。”", "— 胆小狮"],
+          ["“善良的心不是通过语言，而是通过行动体现出来的。”", "— 铁皮人"],
+          ["“真正的友谊会让艰难的道路变得容易一些。”", "— 关于多萝西的团队"],
+          ["“当必须做决定时，智慧才真正显现出来。”", "— 稻草人"],
+          ["“家不仅仅是一个地方，而是有人爱你、等你的地方。”", "— 故事的核心思想"],
+          ["“人往往比自己想象中更强大。”", "— 旅程的意义"],
+          ["“勇敢并不意味着没有恐惧。”", "— 关于狮子"],
+          ["“有时候，魔法始于相信自己。”", "— 故事的意义"],
+          ["“每一次考验都会揭示一个人的性格。”", "— 关于英雄的道路"],
+          ["“善良会让再艰难的道路也变得明亮。”", "— 关于多萝西"],
+          ["“真正的力量藏在人心之中。”", "— 主要结论"],
+          ["“通向梦想的道路会改变一个人。”", "— 关于黄砖路"],
+          ["“人并不会立刻发现自己最好的品质。”", "— 核心思想"],
+          ["“帮助别人本身就说明你已经拥有一颗伟大的心。”", "— 关于铁皮人"],
+          ["“勇气诞生于选择的瞬间，而不是安逸的时刻。”", "— 关于勇敢"],
+          ["“有时候，答案不在魔法师那里，而在你自己身上。”", "— 关于奥兹魔法师"],
+          ["“道路的重要性并不亚于终点。”", "— 旅程的哲学"],
+          ["“朋友会帮助我们看见自己原本没有注意到的东西。”", "— 关于友谊"],
+          ["“幸福可能比你想象得更近。”", "— 故事的结论"],
+          ["“忠诚和善良比恐惧更强大。”", "— 主要道德重点"],
+          ["“你不必完美，依然可以很有价值。”", "— 关于故事人物"],
+          ["“真正的魔法是人性的温暖。”", "— 作品的核心思想"],
+          ["“有时候，回家的路正是帮助你认识自己的路。”", "— 最终意义"]
+        ]
+      }
+    };
+
+    let currentLang = "ru";
+    let quoteIndex = 0;
+    let quoteInterval;
+    let slideInterval;
+    let slideIndex = 0;
+    let mouseX = 0;
+    let mouseY = 0;
+
+    function applyLanguage(lang) {
+      currentLang = lang;
+      const tr = translations[lang];
+      document.documentElement.lang = lang === "zh" ? "zh" : lang;
+      document.title = tr.docTitle;
+      logoText.textContent = tr.logo;
+
+      navAnchors.forEach((link, i) => link.textContent = tr.nav[i]);
+      heroBadge.innerHTML = `<i class="fa-solid fa-star"></i> ${tr.heroBadge}`;
+      heroTitle.textContent = tr.heroTitle;
+      heroParagraphs.forEach((p, i) => p.innerHTML = tr.heroParagraphs[i]);
+      heroButtons[0].innerHTML = `<i class="fa-solid fa-crown"></i> ${tr.heroButtons[0]}`;
+      heroButtons[1].innerHTML = `<i class="fa-solid fa-quote-left"></i> ${tr.heroButtons[1]}`;
+
+      aboutSection.querySelector(".section-title").textContent = tr.sections.about.title;
+      aboutSection.querySelector(".section-subtitle").textContent = tr.sections.about.subtitle;
+      aboutMain.querySelector("h3").textContent = tr.sections.about.mainTitle;
+      aboutMain.querySelectorAll("p").forEach((p, i) => p.textContent = tr.sections.about.mainParagraphs[i]);
+      aboutSide.querySelector("h3").textContent = tr.sections.about.sideTitle;
+      aboutFeatureItems.forEach((item, i) => {
+        item.querySelector("h4").textContent = tr.sections.about.features[i][0];
+        item.querySelector("p").textContent = tr.sections.about.features[i][1];
+      });
+
+      charactersSection.querySelector(".section-title").textContent = tr.sections.characters.title;
+      charactersSection.querySelector(".section-subtitle").textContent = tr.sections.characters.subtitle;
+      characterCards.forEach((card, i) => {
+        const data = tr.sections.characters.cards[i];
+        const icon = card.querySelector(".character-label i").outerHTML;
+        card.querySelector(".character-label").innerHTML = `${icon} ${data.label}`;
+        card.querySelector("h3").textContent = data.title;
+        card.querySelectorAll(".character-content p").forEach((p, j) => p.textContent = data.paragraphs[j]);
+        card.querySelectorAll(".character-tags span").forEach((tag, j) => tag.textContent = data.tags[j]);
+      });
+
+      sliderSection.querySelector(".section-title").textContent = tr.sections.slider.title;
+      sliderSection.querySelector(".section-subtitle").textContent = tr.sections.slider.subtitle;
+      slideCards.forEach((slide, i) => {
+        slide.querySelector(".slide-caption h4").textContent = tr.sections.slider.slides[i][0];
+        slide.querySelector(".slide-caption p").textContent = tr.sections.slider.slides[i][1];
+      });
+      sliderTextCard.querySelector("h3").textContent = tr.sections.slider.textTitle;
+      sliderTextParagraphs.forEach((p, i) => p.textContent = tr.sections.slider.textParagraphs[i]);
+      sliderPoints.forEach((point, i) => {
+        point.querySelector("strong").textContent = tr.sections.slider.points[i][0];
+        point.querySelector("p").textContent = tr.sections.slider.points[i][1];
+      });
+
+      quotesSection.querySelector(".section-title").textContent = tr.sections.quotes.title;
+      quotesSection.querySelector(".section-subtitle").textContent = tr.sections.quotes.subtitle;
+      quoteBadge.innerHTML = `<i class="fa-solid fa-feather-pointed"></i> ${tr.sections.quotes.badge}`;
+      document.getElementById("nextQuoteBtn").innerHTML = `<i class="fa-solid fa-wand-magic-sparkles"></i> ${tr.sections.quotes.nextBtn}`;
+      document.getElementById("randomQuoteBtn").innerHTML = `<i class="fa-solid fa-shuffle"></i> ${tr.sections.quotes.randomBtn}`;
+      quotesSide.querySelector("h3").textContent = tr.sections.quotes.sideTitle;
+      quotesSideParagraph.textContent = tr.sections.quotes.sideParagraph;
+      miniCards.forEach((card, i) => {
+        const icon = card.querySelector("h4 i").outerHTML;
+        card.querySelector("h4").innerHTML = `${icon} ${tr.sections.quotes.miniCards[i][0]}`;
+        card.querySelector("p").textContent = tr.sections.quotes.miniCards[i][1];
+      });
+
+      factsSection.querySelector(".section-title").textContent = tr.sections.facts.title;
+      factsSection.querySelector(".section-subtitle").textContent = tr.sections.facts.subtitle;
+      factCards.forEach((card, i) => {
+        card.querySelector("p").textContent = tr.sections.facts.cards[i];
+      });
+
+      finalPanel.querySelector("h3").textContent = tr.sections.final.title;
+      finalParagraphs.forEach((p, i) => p.textContent = tr.sections.final.paragraphs[i]);
+      finalActions[0].innerHTML = `<i class="fa-solid fa-arrow-up"></i> ${tr.sections.final.actions[0]}`;
+      finalActions[1].innerHTML = `<i class="fa-solid fa-images"></i> ${tr.sections.final.actions[1]}`;
+
+      footerEl.innerHTML = tr.footer;
+      toTop.setAttribute("aria-label", tr.toTopLabel);
+
+      langButtons.forEach(btn => btn.classList.toggle("active", btn.dataset.lang === lang));
+
+      quoteIndex = quoteIndex % tr.quotes.length;
+      showQuote(quoteIndex, true);
+    }
+
+    function showQuote(index, immediate = false) {
+      const tr = translations[currentLang];
+      const pair = tr.quotes[index];
+      const quoteText = document.getElementById("quoteText");
+      const quoteAuthor = document.getElementById("quoteAuthor");
+      quoteText.classList.remove("show");
+
+      const render = () => {
+        quoteText.textContent = pair[0];
+        quoteAuthor.textContent = pair[1];
+        quoteText.classList.add("show");
+      };
+
+      if (immediate) {
+        render();
+      } else {
+        setTimeout(render, 220);
+      }
+    }
+
+    function nextQuote() {
+      quoteIndex = (quoteIndex + 1) % translations[currentLang].quotes.length;
+      showQuote(quoteIndex);
+    }
+
+    function randomQuote() {
+      const list = translations[currentLang].quotes;
+      let newIndex;
+      do {
+        newIndex = Math.floor(Math.random() * list.length);
+      } while (list.length > 1 && newIndex === quoteIndex);
+      quoteIndex = newIndex;
+      showQuote(quoteIndex);
+    }
+
+    function startQuoteInterval() {
+      clearInterval(quoteInterval);
+      quoteInterval = setInterval(nextQuote, 4500);
+    }
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 10) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+
+      if (window.scrollY > 500) {
+        toTop.classList.add("show");
+      } else {
+        toTop.classList.remove("show");
+      }
+
+      let current = "";
+      const scrollMiddle = window.scrollY + window.innerHeight * 0.45;
+      const nearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 20;
+
+      if (nearBottom) {
+        current = "final";
+      } else {
+        sections.forEach(section => {
+          const top = section.offsetTop;
+          const bottom = top + section.offsetHeight;
+          if (scrollMiddle >= top && scrollMiddle < bottom) {
+            current = section.getAttribute("id");
+          }
+        });
+      }
+
+      navAnchors.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === "#" + current) {
+          link.classList.add("active");
+        }
+      });
+
+      parallaxLayers.forEach((layer, index) => {
+        const depth = (index + 1) * 0.45;
+        const scrollOffset = window.scrollY * (0.015 * (index + 1));
+        layer.style.transform = `translate3d(${mouseX * depth}px, calc(${mouseY * depth}px + ${scrollOffset}px), 0)`;
+      });
+    });
+
+    toTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+      });
+    }, { threshold: 0.14 });
+
+    reveals.forEach(el => revealObserver.observe(el));
+
+    const slides = document.querySelectorAll(".slide");
+    const dotsWrap = document.getElementById("sliderDots");
+    const prevSlide = document.getElementById("prevSlide");
+    const nextSlide = document.getElementById("nextSlide");
+    let audioReady = false;
+    const slideAudio = new Audio("https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3");
+    slideAudio.volume = 0.15;
+
+    function enableAudio() {
+      audioReady = true;
+      window.removeEventListener("pointerdown", enableAudio);
+      window.removeEventListener("keydown", enableAudio);
+    }
+
+    window.addEventListener("pointerdown", enableAudio, { once: true });
+    window.addEventListener("keydown", enableAudio, { once: true });
+
+    function createDots() {
+      slides.forEach((_, i) => {
+        const dot = document.createElement("div");
+        dot.classList.add("dot");
+        if (i === 0) dot.classList.add("active");
+        dot.addEventListener("click", () => {
+          slideIndex = i;
+          updateSlides();
+          playSlideSound();
+          resetSlideInterval();
+        });
+        dotsWrap.appendChild(dot);
+      });
+    }
+
+    function updateSlides() {
+      const dots = document.querySelectorAll(".dot");
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === slideIndex);
+      });
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === slideIndex);
+      });
+    }
+
+    function playSlideSound() {
+      if (!audioReady) return;
+      try {
+        slideAudio.currentTime = 0;
+        slideAudio.play().catch(() => {});
+      } catch (e) {}
+    }
+
+    function nextSlideFunc() {
+      slideIndex = (slideIndex + 1) % slides.length;
+      updateSlides();
+      playSlideSound();
+    }
+
+    function prevSlideFunc() {
+      slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+      updateSlides();
+      playSlideSound();
+    }
+
+    function startSlideInterval() {
+      clearInterval(slideInterval);
+      slideInterval = setInterval(nextSlideFunc, 5000);
+    }
+
+    function resetSlideInterval() {
+      clearInterval(slideInterval);
+      startSlideInterval();
+    }
+
+    prevSlide.addEventListener("click", () => {
+      prevSlideFunc();
+      resetSlideInterval();
+    });
+
+    nextSlide.addEventListener("click", () => {
+      nextSlideFunc();
+      resetSlideInterval();
+    });
+
+    createDots();
+    startSlideInterval();
+
+    document.getElementById("nextQuoteBtn").addEventListener("click", () => {
+      nextQuote();
+      startQuoteInterval();
+    });
+
+    document.getElementById("randomQuoteBtn").addEventListener("click", () => {
+      randomQuote();
+      startQuoteInterval();
+    });
+
+    langButtons.forEach(btn => {
+      btn.addEventListener("click", () => applyLanguage(btn.dataset.lang));
+    });
+
+    const parallaxLayers = document.querySelectorAll(".parallax-layer");
+
+    window.addEventListener("mousemove", (e) => {
+      mouseX = (e.clientX / window.innerWidth - 0.5) * 18;
+      mouseY = (e.clientY / window.innerHeight - 0.5) * 18;
+      parallaxLayers.forEach((layer, index) => {
+        const depth = (index + 1) * 0.45;
+        const scrollOffset = window.scrollY * (0.015 * (index + 1));
+        layer.style.transform = `translate3d(${mouseX * depth}px, calc(${mouseY * depth}px + ${scrollOffset}px), 0)`;
+      });
+    });
+
+    function attachTilt(card, amount = 10) {
+      card.addEventListener("mousemove", (e) => {
+        const rect = card.getBoundingClientRect();
+        const px = (e.clientX - rect.left) / rect.width;
+        const py = (e.clientY - rect.top) / rect.height;
+        const rotateY = (px - 0.5) * amount;
+        const rotateX = (0.5 - py) * amount;
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+      });
+
+      card.addEventListener("mouseleave", () => {
+        card.style.transform = "";
+      });
+    }
+
+    document.querySelectorAll(".tilt-card, .character-card").forEach((card) => attachTilt(card, 9));
+
+    applyLanguage("ru");
+    startQuoteInterval();
+  </script>
+
+</body>
+</html>
